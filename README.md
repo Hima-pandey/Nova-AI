@@ -1,138 +1,103 @@
-# 🚀 Nova AI
+# ◈ NOVA AI — Full-Stack Setup Guide
 
-### Your Intelligent Digital Companion for the Future
+A Claude-powered AI assistant with an Express backend and React frontend.
 
-Nova AI is a next-generation AI assistant designed to provide intelligent conversations, voice interaction, long-term memory, automation, and a seamless user experience. Built with modern technologies and advanced AI capabilities, Nova AI aims to become a powerful personal assistant that understands, remembers, and helps users accomplish tasks efficiently.
+---
+
+## 🗂️ Project Structure
+
+```
+nova-ai/
+├── backend/          ← Express API server (port 3001)
+│   ├── server.js
+│   ├── .env          ← YOU CREATE THIS (see step 2)
+│   └── package.json
+├── frontend/         ← React app (port 3000)
+│   ├── src/
+│   │   ├── App.jsx
+│   │   └── index.js
+│   ├── public/
+│   │   └── index.html
+│   └── package.json
+└── package.json      ← Root scripts
+```
+
+---
+
+## 🚀 Quick Start
+
+### Step 1 — Install dependencies
+
+Open a terminal in the `nova-ai` folder and run:
+
+```bash
+# Install backend deps
+cd backend && npm install
+
+# Install frontend deps
+cd ../frontend && npm install
+```
+
+### Step 2 — Add your Anthropic API key
+
+In the `backend/` folder, create a file named **`.env`**:
+
+```
+ANTHROPIC_API_KEY=sk-ant-your-key-here
+PORT=3001
+```
+
+Get your key at: https://console.anthropic.com
+
+### Step 3 — Start the backend (Terminal 1)
+
+```bash
+cd backend
+npm run dev
+```
+
+You should see:
+```
+◈  NOVA AI Backend running on http://localhost:3001
+```
+
+### Step 4 — Start the frontend (Terminal 2)
+
+```bash
+cd frontend
+npm start
+```
+
+Browser opens at **http://localhost:3000** 🎉
+
+---
+
+## 💡 VS Code Tips
+
+- Use the **Split Terminal** (Ctrl+Shift+5) to run both servers side-by-side.
+- Install the **ESLint** and **Prettier** extensions for best experience.
+- The frontend proxies all `/api/*` calls to the backend automatically.
+
+---
+
+## 🔧 How It Works
+
+| Layer    | Tech            | Port  | Role                          |
+|----------|-----------------|-------|-------------------------------|
+| Frontend | React (CRA)     | 3000  | UI, chat, markdown rendering  |
+| Backend  | Express + Node  | 3001  | Anthropic API proxy, sessions |
+| AI       | Claude Sonnet   | —     | Language model responses      |
+
+The backend keeps your API key server-side and stores chat sessions in memory.
+Swap the in-memory store in `server.js` for SQLite/MongoDB to persist across restarts.
 
 ---
 
 ## ✨ Features
 
-### 🤖 AI Conversations
-
-* Human-like natural conversations
-* Context-aware responses
-* Multi-topic understanding
-* Fast and intelligent interactions
-
-### 🎤 Voice Assistant
-
-* Voice input and speech recognition
-* Text-to-speech responses
-* Hands-free AI interaction
-* Real-time communication
-
-### 🧠 Memory System
-
-* Conversation history
-* Personalized responses
-* User preference learning
-* Long-term memory capabilities
-
-### ⚡ Smart Automation
-
-* Task automation
-* Productivity assistance
-* Workflow optimization
-* Intelligent recommendations
-
-### 🎨 Modern Interface
-
-* Responsive design
-* Clean user experience
-* Mobile and desktop support
-* Futuristic dashboard
-
----
-
-## 🛠️ Technology Stack
-
-### Frontend
-
-* HTML5
-* CSS3
-* JavaScript
-* React (Optional)
-
-### Backend
-
-* Node.js
-* Express.js
-* Python
-
-### AI Integration
-
-* Google AI Studio API
-* Gemini Models
-* Speech Recognition APIs
-* Text-to-Speech APIs
-
-### Database
-
-* MongoDB
-* Firebase
-* Local Storage
-
----
-
-## 🚀 Installation
-
-### Clone Repository
-
-```bash
-git clone https://github.com/yourusername/nova-ai.git
-cd nova-ai
-```
-
-### Install Dependencies
-
-```bash
-npm install
-```
-
-### Configure Environment Variables
-
-```env
-GROK_API_KEY=YOUR_API_KEY
-```
-
-### Run Application
-
-```bash
-npm start
-```
-
----
-
-## 📂 Project Structure
-
-```text
-nova-ai/
-│
-├── frontend/
-├── backend/
-├── assets/
-├── components/
-├── api/
-├── database/
-├── docs/
-└── README.md
-
-
-## 🎯 Vision
-
-Nova AI is more than a chatbot. The vision is to create a truly intelligent digital companion capable of understanding users, remembering important information, automating repetitive tasks, and helping people achieve more every day.
-
----
-
-## 👨‍💻 Author
-
-**Hima Pandey**
-
-
-## ⭐ Support
-
-If you like this project, consider giving it a ⭐ on GitHub and following the development journey.
-
-**Nova AI — Building the Future of Intelligent Assistance.**
-.
+- 5 AI personality modes (NOVA, DEVX, SHIELD, SAGE, MUSE)
+- Streaming-style typewriter animation
+- Markdown + code block rendering with copy button
+- Voice input (Web Speech API) and voice output (TTS)
+- Session history (stored in Express backend)
+- Backend health indicator in the sidebar
